@@ -27,6 +27,7 @@ def check(url):
     price_data = soup.find("span", class_="a-price-whole")
     product_name = soup.find("span", class_="a-size-large product-title-word-break")
     product_title = soup.find("span", id="productTitle")
+    product_rating = soup.find('span', {'data-hook': 'rating-out-of-text'}).get_text(strip=True)
     seller_name = soup.find("a", id = "sellerProfileTriggerId")
 
     # Extract the text from the price element
@@ -36,16 +37,13 @@ def check(url):
     # split_price = float(price.split("$")[1])
 
     # Print the extracted price
-    print(product_name)
+    #print(product_name)
     print(product_title.getText().strip())
     print(seller_name)
+    print(product_rating)
     print(price_data.getText())
 
-    # checking availability
-    XPATH_AVAILABILITY = '//div[@id ="availability"]//text()'
-    RAw_AVAILABILITY = doc.xpath(XPATH_AVAILABILITY)
-    AVAILABILITY = ''.join(RAw_AVAILABILITY).strip() if RAw_AVAILABILITY else None
-    #return AVAILABILITY
+
     return doc
 
 def ReadAsin():
