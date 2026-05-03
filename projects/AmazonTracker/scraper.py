@@ -33,30 +33,28 @@ def check(url):
     # Extract the text from the price element
     price = price_data.getText()
 
-    # Convert the price string to a floating-point number
-    # split_price = float(price.split("$")[1])
-
     # Print the extracted price
-    #print(product_name)
-    print(product_title.getText().strip())
-    print(seller_name)
-    print(product_rating)
-    print(price_data.getText())
+    # print(product_name)
+    # print(product_title.getText().strip())
+    # print(seller_name)
+    # print(product_rating)
+    # print(price_data.getText())
 
+    prod_info = {'product_title': product_title.getText().strip(),
+                 'seller_name': seller_name,
+                 'product_rating': product_rating,
+                 'price': price,
+                 'product_url': url
+                 }
 
-    return doc
+    return prod_info
 
-def ReadAsin():
+def readAsin(amazon_url, asin_id):
     # Asin Id is the product Id which
     # needs to be provided by the user
-    Asin = 'B0B1LF85XW'
-    url = "https://www.amazon.com.au/dp/" + Asin
+    url = amazon_url + asin_id
     print ("Processing: "+url)
     ans = check(url)
-    arr = [
-        'Only 1 left in stock.',
-        'Only 2 left in stock.',
-        'In stock.']
-    print(ans)
+    return(ans)
 
 
